@@ -12,11 +12,15 @@ public class UserController {
     public static UserController INSTANCIA = new
             UserController();
 
+
+
     private Database database;
 
     public void setContext(Context ctx) { database = new Database(ctx); }
 
     public void add(User user){ database.addUser(user); }
+
+    public User getUserByUsername(String username ) { return database.getUserByUsername(username); }
 
     public void update(User newUser, long id){
         newUser.setId(id);
