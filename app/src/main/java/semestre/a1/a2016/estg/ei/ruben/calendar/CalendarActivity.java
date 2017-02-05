@@ -13,15 +13,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import semestre.a1.a2016.estg.ei.ruben.calendar.model.Task;
 import semestre.a1.a2016.estg.ei.ruben.calendar.model.TaskAdapter;
 import semestre.a1.a2016.estg.ei.ruben.calendar.model.TaskController;
 
 public class CalendarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
     String username;
+    private static final int REQUEST_ADD_TASK=1;
+    private static final int REQUEST_EDIT_TASK=2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +65,32 @@ public class CalendarActivity extends AppCompatActivity
 
         listTasks();
 
+        ListView list=(ListView) findViewById(R.id.listViewTasks);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> list, View view, int position, long id) {
+                Task task=(Task) list.getItemAtPosition(position);
+
+                Intent intent = new Intent(CalendarActivity.this, NewTaskActivity.class);
+                intent.putExtra("PARAM_TASK", task.getId());
+                startActivityForResult(intent, REQUEST_EDIT_TASK);
+
+            }
+        });
+
+
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode==REQUEST_ADD_TASK || requestCode==REQUEST_EDIT_TASK){
+            if(resultCode==RESULT_OK){
+                listTasks();
+            }
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -107,11 +136,9 @@ public class CalendarActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_manage){
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_logout) {
 
         }
 
@@ -122,7 +149,7 @@ public class CalendarActivity extends AppCompatActivity
 
     public void userSettings(MenuItem item) {
         Intent intent = new Intent(CalendarActivity.this, UserSettingsActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_ADD_TASK);
     }
 
     private void listTasks() {

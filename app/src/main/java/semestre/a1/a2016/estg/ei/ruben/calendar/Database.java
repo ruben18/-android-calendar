@@ -24,6 +24,8 @@ public class Database extends SQLiteOpenHelper {
 
     public Database(Context context){ super(context, DB_NAME, null, DB_VERSION); }
 
+
+
     private static class UsersTable{
         //Table name
         public static final String TABLE_NAME="Users";
@@ -201,5 +203,39 @@ public class Database extends SQLiteOpenHelper {
                 Date.parseDate(res.getString(res.getColumnIndex(TasksTable.DATE))),
                 res.getString(res.getColumnIndex(TasksTable.DESCRIPTION)),
                 res.getInt(res.getColumnIndex(TasksTable.COMPLETE)));
+    }
+
+    public Task getTaskById(long id) {
+        SQLiteDatabase db=getReadableDatabase();
+        Task task=null;
+        Cursor res=db.query(TasksTable.TABLE_NAME, TasksTable.ALL,
+                TasksTable.ID+ "=?", new String[]{Long.toString(id)}, null,null,null);
+
+        if(res.moveToFirst()){
+            task=convertLinesCursorForTask(res);
+        }
+
+        res.close();
+        db.close();
+
+        return task;
+    }
+
+    public int updateTask(Task task){
+        SQLiteDatabase db=getWritableDatabase();
+        ContentValues cv=new ContentValues();
+
+        cv.put(TasksTable.NAME, task.getName());
+        cv.put(TasksTable.DATE, task.getDate().toString());
+        cv.put(TasksTable.DESCRIPTION, task.getDescription());
+        cv.put(TasksTable.COMPLETE, task.getComplete().toString());
+
+        int afectedRows=db.update(TasksTable.TABLE_NAME, cv, TasksTable.ID+"=?",
+                new String[]{Long.toString(task.getId())});
+
+        db.close();
+
+        return afectedRows;
+
     }
 }

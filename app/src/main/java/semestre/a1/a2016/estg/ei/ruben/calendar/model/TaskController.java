@@ -23,4 +23,11 @@ public class TaskController {
     public List<Task> getTasksByUserId(long userID){
         return database.getTasksByUserId(userID);
     }
+
+    public Task getTaskById(long id) { return database.getTaskById(id);    }
+
+    public void updateTask(Task newTask, long id) {
+        newTask.setId(id);
+        database.updateTask(newTask);
+    }
 }
