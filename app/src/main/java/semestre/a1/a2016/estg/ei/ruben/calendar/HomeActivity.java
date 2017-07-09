@@ -34,16 +34,17 @@ public class HomeActivity extends AppCompatActivity {
 
         User user= UserController.INSTANCIA.getUserByUsername(username.getText().toString());
 
-        if(user!=null && user.getPassword().equals(password.getText().toString())){
+        //if(user!=null && user.getPassword().equals(password.getText().toString())){
             Intent intent=new Intent(HomeActivity.this, CalendarActivity.class);
             Bundle extras=new Bundle();
-            extras.putString("USERNAME", username.getText().toString());
+            //extras.putString("USERNAME", username.getText().toString());
+            extras.putString("USERNAME", "ruben18");
 
             intent.putExtras(extras);
             startActivity(intent);
-        }else{
+        /*}else{
             Toast.makeText(this, "Credentials dont match, try again!",
                     Toast.LENGTH_LONG).show();
-        }
+        }*/
     }
 }
