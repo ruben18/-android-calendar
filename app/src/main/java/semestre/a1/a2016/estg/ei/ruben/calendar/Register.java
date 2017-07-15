@@ -9,7 +9,7 @@ import android.widget.Toast;
 import semestre.a1.a2016.estg.ei.ruben.calendar.model.User;
 import semestre.a1.a2016.estg.ei.ruben.calendar.model.UserController;
 
-public class RegisterActivity extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

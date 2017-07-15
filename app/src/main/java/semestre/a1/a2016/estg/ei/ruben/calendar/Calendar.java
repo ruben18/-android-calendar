@@ -3,7 +3,6 @@ package semestre.a1.a2016.estg.ei.ruben.calendar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,7 +20,7 @@ import semestre.a1.a2016.estg.ei.ruben.calendar.model.Task;
 import semestre.a1.a2016.estg.ei.ruben.calendar.model.TaskAdapter;
 import semestre.a1.a2016.estg.ei.ruben.calendar.model.TaskController;
 
-public class CalendarActivity extends AppCompatActivity
+public class Calendar extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     String username;
@@ -39,7 +38,7 @@ public class CalendarActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(CalendarActivity.this, NewTaskActivity.class);
+                Intent intent =new Intent(Calendar.this, NewTask.class);
                 startActivity(intent);
             }
         });
@@ -54,7 +53,8 @@ public class CalendarActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         Bundle extras = getIntent().getExtras();
-        username=extras.getString("USERNAME");
+        //username=extras.getString("USERNAME");
+        username="ruben18";
 
 
         View hView =  navigationView.getHeaderView(0);
@@ -71,7 +71,7 @@ public class CalendarActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> list, View view, int position, long id) {
                 Task task=(Task) list.getItemAtPosition(position);
 
-                Intent intent = new Intent(CalendarActivity.this, NewTaskActivity.class);
+                Intent intent = new Intent(Calendar.this, NewTask.class);
                 intent.putExtra("PARAM_TASK", task.getId());
                 startActivityForResult(intent, REQUEST_EDIT_TASK);
 
@@ -130,7 +130,7 @@ public class CalendarActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_synchronize) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
@@ -148,7 +148,7 @@ public class CalendarActivity extends AppCompatActivity
     }
 
     public void userSettings(MenuItem item) {
-        Intent intent = new Intent(CalendarActivity.this, UserSettingsActivity.class);
+        Intent intent = new Intent(Calendar.this, UserSettings.class);
         startActivityForResult(intent, REQUEST_ADD_TASK);
     }
 

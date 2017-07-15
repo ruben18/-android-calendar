@@ -13,7 +13,7 @@ import semestre.a1.a2016.estg.ei.ruben.calendar.model.Date;
 import semestre.a1.a2016.estg.ei.ruben.calendar.model.Task;
 import semestre.a1.a2016.estg.ei.ruben.calendar.model.TaskController;
 
-public class NewTaskActivity extends AppCompatActivity {
+public class NewTask extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
