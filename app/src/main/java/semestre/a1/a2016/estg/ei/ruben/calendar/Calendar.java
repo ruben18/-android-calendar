@@ -130,8 +130,13 @@ public class Calendar extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+<<<<<<< HEAD:app/src/main/java/semestre/a1/a2016/estg/ei/ruben/calendar/Calendar.java
         if (id == R.id.nav_synchronize) {
             // Handle the camera action
+=======
+        if (id == R.id.nav_camera) {
+            synchronize();
+>>>>>>> 5130514bfb116406fa2c627a506aac8afe45644d:app/src/main/java/semestre/a1/a2016/estg/ei/ruben/calendar/CalendarActivity.java
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -145,6 +150,11 @@ public class Calendar extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void synchronize() {
+
+
     }
 
     public void userSettings(MenuItem item) {

@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/-android-calendar.iml" filepath="$PROJECT_DIR$/-android-calendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Android-Calendar-WebService.iml" filepath="$PROJECT_DIR$/Android-Calendar-WebService.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidCalendarWebservice.iml" filepath="$PROJECT_DIR$/AndroidCalendarWebservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
@@ -16,6 +17,10 @@
             android:title="Slideshow" />
 
     </group>
+=======
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+>>>>>>> 5130514bfb116406fa2c627a506aac8afe45644d
 
     <item android:title="Communicate">
         <menu>
@@ -30,5 +35,20 @@
                 android:icon="@mipmap/ic_logout" />
         </menu>
     </item>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_synchronize"
+            android:icon="@drawable/ic_synchronize"
+            android:title="Synchronize" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Gallery" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Slideshow" />
+
+    </group>
 
 </menu>
